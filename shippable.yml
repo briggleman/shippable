@@ -19,7 +19,9 @@ build:
     - pytest --junitxml=shippable/testresults/nosetests.xml
     - pytest --cov=demo --cov-report=xml:shippable/codecoverage/coverage.xml
   post_ci:
-    - docker build -t ghetto/shippable-demo .
+    - docker build -t ghetto/shippable-demo:$BUILD_NUMBER .
+    - docker tag ghetto/shippable-demo:$BUILD_NUMBER ghetto/shippable-demo:latest
+    - docker push ghetto/shippable-demo:$BUILD_NUMBER
     - docker push ghetto/shippable-demo:latest
 
 integrations:
