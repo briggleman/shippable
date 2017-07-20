@@ -1,0 +1,20 @@
+# set our development language
+lanuage: python
+
+# set the versions of the language to test against
+python:
+  - 3.6
+  - 3.5
+  - 2.7
+
+# build, baby, build
+build:
+  ci:
+    # make required directories
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+    # install our requirements
+    - "pip install -e ."
+    # run test and code coverage and output the results to our created directories
+    - pytest --junitxml=shippable/testresults/nosetests.xml
+    - pytest --cov=modules --cov-report=xml:shippable/codecoverage/coverage.xml
