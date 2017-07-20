@@ -17,4 +17,4 @@ build:
     - "pip install -e ."
     # run test and code coverage and output the results to our created directories
     - pytest --junitxml=results/testresults/nosetests.xml
-    - pytest --cov=modules --cov-report=xml:results/codecoverage/coverage.xml
+    - pytest --cov=shippable --cov-report=xml:results/codecoverage/coverage.xml
