@@ -15,7 +15,6 @@ build:
     - mkdir -p results/codecoverage
     # install our requirements
     - pip install -e ".[tests]"
-    - python setup.py test
     # run test and code coverage and output the results to our created directories
     - pytest --junitxml=shippable/testresults/nosetests.xml
     - pytest --cov=demo --cov-report=xml:shippable/codecoverage/coverage.xml
