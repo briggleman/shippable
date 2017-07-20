@@ -18,4 +18,4 @@ build:
     - python setup.py test
     # run test and code coverage and output the results to our created directories
     - pytest --junitxml=shippable/testresults/nosetests.xml
-    - pytest --cov=shippable --cov-report=xml:shippable/codecoverage/coverage.xml
+    - pytest --cov=demo --cov-report=xml:shippable/codecoverage/coverage.xml
