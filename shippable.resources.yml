@@ -1,0 +1,5 @@
+# version resource
+- name: release-version
+  type: version
+  seed:
+    versionName: "0.0.1"
