@@ -11,10 +11,10 @@ python:
 build:
   ci:
     # make required directories
-    - mkdir -p shippable/testresults
-    - mkdir -p shippable/codecoverage
+    - mkdir -p results/testresults
+    - mkdir -p results/codecoverage
     # install our requirements
     - "pip install -e ."
     # run test and code coverage and output the results to our created directories
-    - pytest --junitxml=shippable/testresults/nosetests.xml
-    - pytest --cov=modules --cov-report=xml:shippable/codecoverage/coverage.xml
+    - pytest --junitxml=results/testresults/nosetests.xml
+    - pytest --cov=modules --cov-report=xml:results/codecoverage/coverage.xml
