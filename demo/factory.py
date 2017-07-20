@@ -18,7 +18,7 @@ def create_app(config=None):
     return app
 
 def register_blueprints(app):
-    for name in find_modules("shippable.blueprints"):
+    for name in find_modules("demo.blueprints"):
         mod = import_string(name)
         if hasattr(mod, "bp"):
             app.register_blueprint(mod.bp)

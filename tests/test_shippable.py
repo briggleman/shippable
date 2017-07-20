@@ -1,7 +1,6 @@
 import pytest
-import json
 
-from shippable.factory import create_app
+from demo.factory import create_app
 
 
 @pytest.fixture
