@@ -1,5 +1,5 @@
 # set our development language
-lanuage: python
+language: python
 
 # set the versions of the language to test against
 python:
