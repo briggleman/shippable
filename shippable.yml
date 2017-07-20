@@ -7,21 +7,28 @@ python:
   - 3.5
   - 2.7
 
+# environment variables
+env:
+  # global vars
+  global:
+    - TEST_RESULTS=$SHIPPABLE_REPO_DIR/shippable/testresults
+    - CODE_COVERAGE_DIR=$SHIPPABLE_REPO_DIR/shippable/codecoverage
+    - TEST_LOC_DIR=$SHIPPABLE_REPO_DIR/tests
+
 # build, baby, build
 build:
   ci:
     # make required directories
-    - mkdir -p results/testresults
-    - mkdir -p results/codecoverage
+    - mkdir -p $TEST_RESULTS && mkdir -p $CODE_COVERAGE_DIR
     # install our requirements
     - pip install -e ".[tests]"
     # run test and code coverage and output the results to our created directories
-    - pytest --junitxml=shippable/testresults/nosetests.xml
-    - pytest --cov=demo --cov-report=xml:shippable/codecoverage/coverage.xml
+    - pytest --junitxml=$TEST_RESULTS/nosetests.xml
+    - pytest --cov=demo --cov-report=xml:$CODE_COVERAGE_DIR/coverage.xml
   post_ci:
-    - docker build -t ghetto/shippable-demo:$BUILD_NUMBER .
-    - docker tag ghetto/shippable-demo:$BUILD_NUMBER ghetto/shippable-demo:latest
-    - docker push ghetto/shippable-demo:$BUILD_NUMBER
+    - docker build -t ghetto/shippable-demo:$SHIPPABLE_BUILD_NUMBER .
+    - docker tag ghetto/shippable-demo:$SHIPPABLE_BUILD_NUMBER ghetto/shippable-demo:latest
+    - docker push ghetto/shippable-demo:$SHIPPABLE_BUILD_NUMBER
     - docker push ghetto/shippable-demo:latest
 
 integrations:

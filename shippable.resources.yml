@@ -1,5 +1,16 @@
-# version resource
-- name: release-version
-  type: version
-  seed:
-    versionName: "0.0.1"
+resources:
+  # docker image resource
+  - name: demo-img
+    type: image
+    integration: docker-hub
+    pointer:
+      sourceName: "ghetto/shippable-demo"
+      isPull: false
+    seed:
+      versionName: "0.0.1"
+
+  # version resource
+  - name: demo-release-version
+    type: version
+    seed:
+      versionName: "0.0.1"
