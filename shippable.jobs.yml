@@ -1,7 +1,7 @@
 # our ci workflow
 # for this demo it is run ci -> bump version -> deploy to docker hub
 jobs:
-  - name: shippable
+  - name: shippable_runCI
     type: runCI
     steps:
       - OUT: demo-docker-image
