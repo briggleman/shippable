@@ -1,6 +1,6 @@
 resources:
   # docker image resource
-  - name: demo-img
+  - name: demo-docker-image
     type: image
     integration: docker-hub
     pointer:

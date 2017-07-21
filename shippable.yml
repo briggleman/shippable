@@ -25,11 +25,6 @@ build:
     # run test and code coverage and output the results to our created directories
     - pytest --junitxml=$TEST_RESULTS/nosetests.xml
     - pytest --cov=demo --cov-report=xml:$CODE_COVERAGE_DIR/coverage.xml
-  post_ci:
-    - docker build -t ghetto/shippable-demo:$SHIPPABLE_BUILD_NUMBER .
-    - docker tag ghetto/shippable-demo:$SHIPPABLE_BUILD_NUMBER ghetto/shippable-demo:latest
-    - docker push ghetto/shippable-demo:$SHIPPABLE_BUILD_NUMBER
-    - docker push ghetto/shippable-demo:latest
 
 integrations:
   hub:

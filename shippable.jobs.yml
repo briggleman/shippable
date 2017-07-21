@@ -1,0 +1,14 @@
+# our ci workflow
+# for this demo it is run ci -> bump version -> deploy to docker hub
+jobs:
+  - name: shippable
+    type: runCI
+    steps:
+      - OUT: demo-docker-image
+
+  - name: bump-container-version
+    type: release
+    steps:
+      - IN: demo-docker-image
+      - TASK: managed
+        bump: patch
