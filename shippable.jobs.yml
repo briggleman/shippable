@@ -1,0 +1,15 @@
+jobs:
+
+  # run the ci job for the image
+  - name: ci-build
+    type: runCI
+    steps:
+      - OUT: demo-img
+
+  # take the ci job image output and bump the version
+  - name: ci-version-bump
+    type: release
+    steps:
+      - IN: demo-img
+      - TASK: managed
+        bump: patch
